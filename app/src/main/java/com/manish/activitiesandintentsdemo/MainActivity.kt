@@ -1,15 +1,33 @@
 package com.manish.activitiesandintentsdemo
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.name
+
+    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        // Handle the returned Uri
+    }
+
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
+            if (activityResult.resultCode == RESULT_OK) {
+                val receivedIntent = activityResult.data
+                Toast.makeText(this, "Result OK", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Result other than OK", Toast.LENGTH_LONG).show()
+            }
+        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn_launch_activity).setOnClickListener {
             launchActivityB()
+        }
+
+        findViewById<Button>(R.id.btn_launch_activity_for_result).setOnClickListener {
+            startForResult.launch(Intent(this, ActivityB::class.java))
         }
     }
 
