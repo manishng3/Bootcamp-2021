@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_launch_activity_for_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Launch Activity B for Result"
-        app:layout_constraintEnd_toEndOf="@+id/btn_launch_activity"
-        app:layout_constraintStart_toStartOf="@+id/btn_launch_activity"
-        app:layout_constraintTop_toBottomOf="@+id/btn_launch_activity" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -29,14 +19,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_launch_activity"
+        android:id="@+id/btn_launch_explicit_intent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Launch Activity B"
+        android:text="Launch an explicit intent"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <Button
+        android:id="@+id/btn_launch_implicit_intent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Launch an implicit intent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_launch_explicit_intent"
+        app:layout_constraintStart_toStartOf="@+id/btn_launch_explicit_intent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_launch_explicit_intent" />
+
+    <Button
+        android:id="@+id/btn_launch_implicit_intent_with_chooser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Launch an implicit intent with chooser"
+        app:layout_constraintEnd_toEndOf="@+id/btn_launch_explicit_intent"
+        app:layout_constraintStart_toStartOf="@+id/btn_launch_explicit_intent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_launch_implicit_intent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
